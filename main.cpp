@@ -1,6 +1,7 @@
 #include <iostream>
 #include "stdafx.h"
 #include "Grid.h"
+#include "Rute.h"
 
 int main() {
 	//	Grid<int> g3(3);

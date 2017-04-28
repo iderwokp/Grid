@@ -64,6 +64,9 @@ public:
 	Grid& operator=(const Grid& src) = delete;
 	Grid(Grid&& src) = delete;
 	Grid& operator=(Grid&& src) = delete;
+	
+	int num_rows() const {return size_vert;}
+	int num_columns() const {return size_hor;}
 
 	int x_coord(int index) const;
 	int y_coord(int index) const;
@@ -151,4 +154,20 @@ void Grid<T>::init_row_vec() {
 		row_vec.push_back(r2);
 	}//if
 }//init_row_vec()
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, Grid<T> &grid) {
+	//for(auto r = std::begin(grid);r<std::begin(grid)+num_rows();r++) {
+	for(int y = 0;y<grid.num_rows();++y) 
+		for(int x = 0;x<grid.num_columns();++x)
+			os << grid.getElement(x, y);
+			
+	return os;	
+		
+	
+	
+}
+
+
+
 
