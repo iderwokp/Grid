@@ -12,12 +12,12 @@ class Rute {
 
 	Rute_verdi mInt_val;
 	//std::string mStr_val;
-	const std::map<Rute_verdi, std::string> Val{ { Rute_verdi::Kryss, "X" },{ Rute_verdi::Blank, " " },{ Rute_verdi::Sirkel, "O" } };
+	 const std::map<Rute_verdi, std::string> Val{ { Rute_verdi::Kryss, "X" },{ Rute_verdi::Blank, " " },{ Rute_verdi::Sirkel, "O" } };
 
 public:
 	Rute() : Rute(Rute_verdi::Blank) {}
 	Rute(Rute_verdi rv): mInt_val { rv } {}
-	std::string str_val(Rute_verdi)const ;
+	std::string str_val(Rute_verdi) const ;
 	Rute_verdi int_val() const { return mInt_val; }
 	bool operator==(const Rute& rhs) const {
 		return mInt_val == rhs.mInt_val;
@@ -32,6 +32,6 @@ std::ostream& operator<<(std::ostream& os, Rute &rute) {
 	return os;
 }
 
-std::string Rute::str_val(Rute_verdi rv) const  {
-	return Val[rv];
+std::string Rute::str_val(Rute_verdi rv)  const {
+	return Val.at(rv);
 }

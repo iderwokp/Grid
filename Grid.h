@@ -83,10 +83,7 @@ private:
 
 };
 
-std::ostream& operator<<(std::ostream& os, Grid &grid) {
-	
-	
-}
+
 
 
 
