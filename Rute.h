@@ -12,7 +12,7 @@ class Rute {
 
 	Rute_verdi mInt_val;
 	//std::string mStr_val;
-	 const std::map<Rute_verdi, std::string> Val{ { Rute_verdi::Kryss, "X" },{ Rute_verdi::Blank, "." },{ Rute_verdi::Sirkel, "O" } };
+	  std::map<Rute_verdi, std::string> Val{ { Rute_verdi::Kryss, "X" },{ Rute_verdi::Blank, "." },{ Rute_verdi::Sirkel, "O" } };
 
 public:
 	Rute() : Rute(Rute_verdi::Blank) {}
