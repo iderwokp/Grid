@@ -11,7 +11,7 @@ int main() {
 	//		cout << endl;
 	//	}
 
-
+	//Editert 29.04.2017 for testens skyld
 
 	Grid<std::string> g(4, 3); //4x3
 
