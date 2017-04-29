@@ -76,6 +76,7 @@ public:
 	T setElement(int x, int y, T verdi);
 	Row_iterator begin();
 	Row_iterator end();
+	void fill();
 	~Grid();
 
 private:
@@ -86,7 +87,14 @@ private:
 
 
 
-
+template<typename T>
+void Grid<T>::fill() {
+	for(T& e: vec) {
+		T t;
+		e = t;
+	}	
+		
+}
 
 template<typename T>
 int Grid<T>::x_coord(int index) const {
@@ -161,10 +169,13 @@ void Grid<T>::init_row_vec() {
 template <typename T>
 std::ostream& operator<<(std::ostream& os, Grid<T> &grid) {
 	//for(auto r = std::begin(grid);r<std::begin(grid)+num_rows();r++) {
-	for(int y = 0;y<grid.num_rows();++y) 
-		for(int x = 0;x<grid.num_columns();++x)
-			os << grid.getElement(x, y);
-			
+	for(int y = 0;y<grid.num_rows();++y) {
+		os << "|";
+		for(int x = 0;x<grid.num_columns();++x) {
+			os << grid.getElement(x, y) << "|";
+		}//for x
+		os << "\n";
+	}//for y
 	return os;	
 		
 	
