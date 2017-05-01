@@ -18,7 +18,7 @@ public:
 	Rute() : Rute(Rute_verdi::Blank) {}
 	Rute(Rute_verdi rv): mInt_val { rv } {}
 	~Rute() {
-		std::cout << "Rute::~Rute()\n";
+		//std::cout << "Rute::~Rute()\n";
 	}
 	std::string str_val(Rute_verdi) const ;
 	Rute_verdi int_val() const { return mInt_val; }

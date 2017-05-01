@@ -1,7 +1,8 @@
 #include <iostream>
 #include "stdafx.h"
-#include "Grid.h"
-#include "Rute.h"
+//#include "Grid.h"
+//#include "Rute.h"
+#include "Tboard.h"
 
 int main() {
 	//	Grid<int> g3(3);
@@ -22,12 +23,16 @@ int main() {
 //	std::cout << "gammel verdi i 0,0 er " << gml1 << " og ny verdi er " << g.getElement(0, 0) << std::endl;
 //	std::cout << "gammel verdi i 0,0 er " << gml2 << " og ny verdi er " << g.getElement(0, 0) << std::endl;
 //	std::cout << "gammel verdi i 2,1 er " << gml3 << " og ny verdi er " << g.getElement(2, 1) << std::endl;
-	std::cout << "Grid<Rute> grute(3)\n";
-	Grid<Rute> grute(3);
-	std::cout << "grute.fill();\n";
-	grute.fill();
-	std::cout << "std::cout << grute;\n";
-	std::cout << grute;
+	std::cout << "Tboard tb(3)\n";
+	Tboard tb(3);
+	std::cout << "tb.fill();\n";
+	tb.fill();
+	std::cout << "std::cout << tb;\n";
+	std::cout << tb << std::endl;
+	tb.set_val(0, 0, Rute_verdi::Kryss);
+	tb.set_val(1, 1, Rute_verdi::Kryss);
+	tb.set_val(2, 2, Rute_verdi::Kryss);
+	std::cout << tb << std::endl;
 	return 0;
 
 }
