@@ -11,11 +11,11 @@ class Tboard: public Grid<Rute> {
 
 Rute_verdi Tboard::set_val(int x, int y, Rute_verdi rv) {
 	Rute ru = getElement(x, y);
-	std::cout << "ru = " << ru << endl;
+	std::cout << "ru = " << ru << std::endl;
 	Rute temp{ru};
 	ru.set_val(rv);
 	setElement(x, y, ru);
-	std::cout << "ru = " << ru << endl;
+	std::cout << "ru = " << ru << std::endl;
 	return temp.int_val();
 	
 }

@@ -1,6 +1,6 @@
 // Grid.cpp : Defines the entry point for the console application.
 //
-
+#include "Row.h"
 #include "stdafx.h"
 
 /*
@@ -8,45 +8,8 @@ int vec_indx = game_size + (i*game_size) - (i + 1);
 k.x = vec_indx % game_size;
 k.y = static_cast<int> (vec_indx / game_size);
 */
-using namespace std;
-class Row;
-class Row_iterator {
-	int pos;
-	Row* row;
-	//int Rows_size;
-	std::vector<Row*>* rows;
-public:
-	Row_iterator(std::vector<Row*>* r, int p) : rows{ r }, pos{ p } {}
-	Row& operator*() {
-		return *rows->at(pos);
-	}
-	Row_iterator& operator++() {
-		++pos;
-		return *this;
-	}
-	Row_iterator& operator--() {
-		--pos;
-		return *this;
-	}
-	bool operator==(const Row_iterator& other) const { return pos == other.pos; }
-	bool operator!=(const Row_iterator& other) const { return !(*this == other); }
 
-};
 
-class Row {
-	std::vector<std::pair<int, int>> row_data{};
-public:
-	void add_data(std::pair<int, int> p) {
-		row_data.push_back(p);
-	}
-	std::pair<int, int> row_coords(int pos) {
-		return row_data.at(pos);
-	}
-	const std::vector<std::pair<int, int>>& data() {
-		return row_data;
-	}
-
-};
 template<typename T>
 class Grid {
 	int size_hor, size_vert;
@@ -156,11 +119,11 @@ void Grid<T>::init_row_vec() {
 		Row* r1 = new Row();
 		Row* r2 = new Row();
 		for (int xy = 0; xy < size_hor; ++xy) {
-			r1->add_data(make_pair(xy, xy));
+			r1->add_data(std::make_pair(xy, xy));
 		}
 		row_vec.push_back(r1);
 		for (int xy = 0; xy < size_hor; ++xy) {
-			r2->add_data(make_pair((size_hor - 1) - xy, xy));
+			r2->add_data(std::make_pair((size_hor - 1) - xy, xy));
 		}
 		row_vec.push_back(r2);
 	}//if
