@@ -36,7 +36,9 @@ public:
 
 	int coordToIndx(int x, int y) const;
 	T& getElement(int x, int y);
+	T& getElement(std::pair<int, int>);
 	T setElement(int x, int y, T verdi);
+	T setElement(std::pair<int, int>, T verdi);
 	Row_iterator begin();
 	Row_iterator end();
 	void fill();
@@ -77,10 +79,19 @@ T& Grid<T>::getElement(int x, int y) {
 	return vec.at(coordToIndx(x, y));
 }
 template<typename T>
+T& Grid<T>::getElement(std::pair<int, int> xy) {
+	return getElement(xy.first, xy.second);
+}
+template<typename T>
 T Grid<T>::setElement(int x, int y, T verdi) {
 	T temp = vec.at(coordToIndx(x, y));
 	vec.at(coordToIndx(x, y)) = verdi;
 	return temp;
+}
+template<typename T>
+T Grid<T>::setElement(std::pair<int, int> xy, T verdi) {
+	
+	return setElement(xy.first, xy.second, verdi);
 }
 template<typename T>
 Row_iterator Grid<T>::begin() {
