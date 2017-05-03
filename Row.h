@@ -9,6 +9,9 @@ public:
 	Row& operator*() {
 		return *rows->at(pos);
 	}
+	Row* operator->() {
+		return &(*rows->at(pos));// Er ikke helt sikker på at denne er rett
+	}
 	Row_iterator& operator++() {
 		++pos;
 		return *this;

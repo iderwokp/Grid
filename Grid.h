@@ -95,6 +95,7 @@ T Grid<T>::setElement(std::pair<int, int> xy, T verdi) {
 }
 template<typename T>
 Row_iterator Grid<T>::begin() {
+	if (row_vec.size() == 0) return end();
 	return Row_iterator(&row_vec, 0);
 }
 template<typename T>
