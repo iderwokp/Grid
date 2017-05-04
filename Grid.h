@@ -42,7 +42,7 @@ public:
 	Row_iterator begin();
 	Row_iterator end();
 	void fill();
-	~Grid();
+	virtual	~Grid();
 
 private:
 	void init_row_vec();
