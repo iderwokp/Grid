@@ -28,11 +28,16 @@ int main() {
 	std::cout << "tb.fill();\n";
 	tb.fill();
 	std::cout << "std::cout << tb;\n";
+	Tboard tb2{tb};
 	std::cout << tb << std::endl;
 	tb.set_val(0, 0, Rute_verdi::Kryss);
 	tb.set_val(1, 1, Rute_verdi::Kryss);
 	tb.set_val(2, 2, Rute_verdi::Kryss);
 	std::cout << tb << std::endl;
+	std::cout << tb2 << std::endl;
+	tb = tb2;
+	std::cout << "tb = tb2\n" << tb << std::endl;
+	
 	return 0;
 
 }

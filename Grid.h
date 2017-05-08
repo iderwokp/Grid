@@ -23,8 +23,8 @@ public:
 		vec.resize(size_hor*size_vert);
 		init_row_vec();
 	}
-	Grid(const Grid& src) = delete;
-	Grid& operator=(const Grid& src) = delete;
+	Grid(const Grid& src);// = default;
+	Grid& operator=(const Grid& src);// = default;
 	Grid(Grid&& src) = delete;
 	Grid& operator=(Grid&& src) = delete;
 	
@@ -35,6 +35,8 @@ public:
 	int y_coord(int index) const;
 
 	int coordToIndx(int x, int y) const;
+	T& operator[](int indx) { return vec[indx];}
+	const T& operator[](int indx) const { return vec[indx];}
 	T& getElement(int x, int y);
 	T& getElement(std::pair<int, int>);
 	T setElement(int x, int y, T verdi);
@@ -46,12 +48,30 @@ public:
 
 private:
 	void init_row_vec();
+	void copyFrom(const Grid& src);
 
 };
 
-
-
-
+template<typename T>
+void Grid<T>::copyFrom(const Grid& src) {
+	vec = src.vec;
+	size_hor = src.size_hor;
+	size_vert = src.size_vert;
+}
+template<typename T>
+Grid<T>::Grid(const Grid& src) {
+	//vec.resize(src.vec.size());
+	copyFrom(src);
+	init_row_vec();
+	
+}
+template<typename T>
+Grid<T>& Grid<T>::operator=(const Grid& src) {
+	vec.clear();
+	row_vec.clear();
+	copyFrom(src);
+	return *this;
+}
 template<typename T>
 void Grid<T>::fill() {
 	for(T& e: vec) {
