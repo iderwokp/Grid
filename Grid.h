@@ -25,8 +25,8 @@ public:
 	}
 	Grid(const Grid& src);// = default;
 	Grid& operator=(const Grid& src);// = default;
-	Grid(Grid&& src) = delete;
-	Grid& operator=(Grid&& src) = delete;
+	Grid(Grid&& src);// = delete;
+	Grid& operator=(Grid&& src) ;//= delete;
 	
 	int num_rows() const {return size_vert;}
 	int num_columns() const {return size_hor;}
@@ -60,6 +60,7 @@ void Grid<T>::copyFrom(const Grid& src) {
 }
 template<typename T>
 Grid<T>::Grid(const Grid& src) {
+	std::cout << "GRID::copytor\n";
 	//vec.resize(src.vec.size());
 	copyFrom(src);
 	init_row_vec();
@@ -67,9 +68,30 @@ Grid<T>::Grid(const Grid& src) {
 }
 template<typename T>
 Grid<T>& Grid<T>::operator=(const Grid& src) {
+	std::cout << "GRID::copyassign\n";
+	if(this == &src) return *this;
 	vec.clear();
 	row_vec.clear();
 	copyFrom(src);
+	return *this;
+}
+
+template<typename T>
+Grid<T>::Grid(Grid&& src) {
+	std::cout << "GRID::movetor\n";
+	copyFrom(src);
+	src.vec.clear();
+	row_vec = src.row_vec();
+	src.row_vec.clear();	
+}
+template<typename T>
+Grid<T>& Grid<T>::operator=(Grid&& src) {
+	std::cout << "GRID::moveassign\n";
+	if(this == &src) return *this;
+	copyFrom(src);
+	src.vec.clear();
+	row_vec = src.row_vec();
+	src.row_vec.clear();	
 	return *this;
 }
 template<typename T>
@@ -125,7 +147,7 @@ Row_iterator Grid<T>::end() {
 template<typename T>
 Grid<T>::~Grid() {
 	for (auto r : row_vec) delete r;
-	std::cout << "Grid::~Grid()\n";
+	//std::cout << "Grid::~Grid()\n";
 }
 template<typename T>
 void Grid<T>::init_row_vec() {

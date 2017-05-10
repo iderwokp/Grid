@@ -5,7 +5,8 @@ class Tboard: public Grid<Rute> {
 	
 	public:
 		Tboard(int sz) : Grid(sz) {}
-		~Tboard() { std::cout << "Tboard::~Tboard()\n"; }
+		~Tboard() { //std::cout << "Tboard::~Tboard()\n"; 
+		}
 		Rute_verdi set_val(int x, int y, Rute_verdi rv);
 		Rute_verdi get_val(int x, int y);
 };
